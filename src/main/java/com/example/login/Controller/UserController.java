@@ -28,10 +28,11 @@ public class UserController {
     */
     @RequestMapping("/getUser")
     public User getUser(){
-        logger.info(">>>>>获取用户接口>>>>>");
+        logger.info(">>>>>获取用户接口 begin>>>>>");
         User user = new User();
         user.setName("wangch");
         user.setPassword("123456");
+        logger.info(">>>>>获取用户接口 begin>>>>>");
         return user;
     }
 }
