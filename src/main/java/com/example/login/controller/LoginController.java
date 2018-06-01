@@ -1,5 +1,6 @@
-package com.example.login.Controller;
+package com.example.login.controller;
 
+import com.example.login.common.LoggerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,20 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class LoginController {
-
-    Logger logger = LoggerFactory.getLogger(LoginController.class);
-
     /**
      * @Description: ${todo}
-     * @param ${tags} 
-     * @return ${return_type} 
-     * @throws
      * @author wangch
      * @date 2018/6/1 0001 上午 12:26
     */
     @RequestMapping("/hello")
     public String sayHello(){
-        logger.info("欢迎请求登录接口........");
+        LoggerUtil.info("欢迎请求登录接口");
         return "hello world 1223123!";
     }
 }

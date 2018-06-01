@@ -1,8 +1,9 @@
-package com.example.login.Controller;
+package com.example.login.controller;
 
+import com.example.login.common.LoggerUtil;
 import com.example.login.domain.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.login.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
+    @Autowired
+    private UserService userService;
     /**
      * @Description: ${todo}
      * @param
@@ -28,11 +30,7 @@ public class UserController {
     */
     @RequestMapping("/getUser")
     public User getUser(){
-        logger.info(">>>>>获取用户接口 begin>>>>>");
-        User user = new User();
-        user.setName("wangch");
-        user.setPassword("123456");
-        logger.info(">>>>>获取用户接口 begin>>>>>");
-        return user;
+        LoggerUtil.info("controller 层 获取用户接口");
+        return userService.getUser();
     }
 }
