@@ -28,7 +28,7 @@ public class FilterConfig {
         filterFilterRegistrationBean.setEnabled(true);
         filterFilterRegistrationBean.addUrlPatterns("/*");
         filterFilterRegistrationBean.setName("MyCustom Filter");
-        filterFilterRegistrationBean.addInitParameter("date","------- 六一儿童节 -------");
+        filterFilterRegistrationBean.addInitParameter("date","六一儿童节");
         filterFilterRegistrationBean.setOrder(1);
         return  filterFilterRegistrationBean;
     }

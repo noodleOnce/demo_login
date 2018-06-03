@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" debug="true">
+
+   <!-- 以下三个节点的配置可有可无
+   <contextName>demo_login</contextName>
+    <property name="logback.logdir" value="/tomcat/log/demo_login.log"/>
+    <property name="logback.appname" value="demo_login"/>
+    -->
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="rollingFile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>../logs/demo-login/demo-login.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>./logs/demo-login.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <TimeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>10MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 控制具体某一个包的日志输出 -->
+    <logger name="com.example.login.service" level="debug" />
+
+    <root level="info">
+        <appender-ref ref="console"></appender-ref>
+        <appender-ref ref="rollingFile"></appender-ref>
+    </root>
+</configuration>

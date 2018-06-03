@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class LoggerUtil {
 
     public static void info(String format,Object... arguments){
-        info(innerGet(),"----------"+format+"----------",arguments);
+        info(innerGet(),"-------- "+format+" ----------",arguments);
     }
 
     public static void info(Logger logger,String format,Object... arguments){
@@ -20,7 +20,7 @@ public class LoggerUtil {
     }
 
     public static void debug(String format,Object... arguments){
-        debug(innerGet(),"---------"+format+"----------",arguments);
+        debug(innerGet(),"--------- "+format+" ----------",arguments);
     }
 
     public static void debug(Logger logger,String format,Object... arguments){

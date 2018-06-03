@@ -3,6 +3,7 @@ package com.example.login.controller;
 import com.example.login.common.LoggerUtil;
 import com.example.login.domain.User;
 import com.example.login.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
     @Autowired
     private UserService userService;
@@ -30,7 +32,7 @@ public class UserController {
     */
     @RequestMapping("/getUser")
     public User getUser(){
-        LoggerUtil.info("controller 层 获取用户接口");
+        log.debug("controller 层 获取用户接口");
         return userService.getUser();
     }
 }

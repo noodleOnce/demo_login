@@ -17,7 +17,7 @@ public class UserService {
     * @date 2018/6/1 18:25
     */
     public User getUser(){
-        LoggerUtil.info("service 层 获取用户接口");
+        LoggerUtil.debug("service 层 获取用户接口");
         User user = new User();
         user.setName("wangch");
         user.setPassword("123456");

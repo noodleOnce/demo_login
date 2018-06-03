@@ -1,5 +1,6 @@
 package com.example.login.core.filter;
 
+import com.example.login.common.LoggerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,8 +17,6 @@ import java.io.IOException;
  */
 public class MyFilter implements Filter {
 
-    private Logger logger = LoggerFactory.getLogger(MyFilter.class);
-
     private FilterConfig filterConfig;
 
     /**
@@ -28,7 +27,7 @@ public class MyFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.filterConfig = filterConfig;
-        logger.info("--------- MyCustom Filter init ing------------");
+        LoggerUtil.info("MyCustom Filter init ing");
     }
 
     /**
@@ -40,8 +39,8 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String date =  filterConfig.getInitParameter("date");
-        logger.info("---------init parame  ："+date+"----------------");
-        logger.info("---------this is MyCustom Filter,url ："+request.getRequestURI()+"----------------");
+        LoggerUtil.info("init parame  ："+date+"");
+        LoggerUtil.info("this is MyCustom Filter,url ："+request.getRequestURI());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
@@ -52,6 +51,6 @@ public class MyFilter implements Filter {
     */
     @Override
     public void destroy() {
-        logger.info("--------- MyCustom Filter init destroy------------");
+        LoggerUtil.info("MyCustom Filter init destroy");
     }
 }
