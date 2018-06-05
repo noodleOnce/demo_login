@@ -1,8 +1,12 @@
 package com.example.login.service;
 
-import com.example.login.common.LoggerUtil;
+import com.example.login.dao.UserRepository;
 import com.example.login.domain.User;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author wangch
@@ -10,17 +14,17 @@ import org.springframework.stereotype.Service;
  * @date 2018/6/118:24
  */
 @Service
+@Slf4j
 public class UserService {
+    @Autowired
+    private UserRepository userRepository;
     /**
     * @Description: 获取用户
     * @author wangch
     * @date 2018/6/1 18:25
     */
-    public User getUser(){
-        LoggerUtil.debug("service 层 获取用户接口");
-        User user = new User();
-       /* user.setName("wangch");
-        user.setPassword("123456");*/
-        return user;
+    public List<User> getAllUser(){
+        log.debug("service 层 获取用户接口");
+        return userRepository.findAll();
     }
 }

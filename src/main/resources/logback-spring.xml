@@ -27,7 +27,7 @@
             <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-    <!-- 控制具体某一个包的日志输出 -->
+    <!-- 控制具体某一个包的日志输出-->
     <logger name="com.example.login.service" level="debug" />
 
     <root level="info">
