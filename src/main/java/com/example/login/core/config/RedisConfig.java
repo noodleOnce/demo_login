@@ -32,8 +32,8 @@ public class RedisConfig extends CachingConfigurerSupport {
             }
         };
     }
-    @Bean
+    /*@Bean
     public CacheManager cacheManager(){
         return null;
-    }
+    }*/
 }

@@ -27,4 +27,8 @@ public class UserService {
         log.debug("service 层 获取用户接口");
         return userRepository.findAll();
     }
+
+    public User getUser(User user) {
+        return userRepository.findByUserNameAndPassWord(user.getUserName(),user.getPassWord());
+    }
 }

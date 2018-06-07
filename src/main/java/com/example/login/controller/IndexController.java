@@ -1,8 +1,16 @@
 package com.example.login.controller;
 
+import com.example.login.common.HttpUtil;
+import com.example.login.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author wangch
@@ -13,9 +21,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class IndexController {
 
-    @RequestMapping("/index")
-    public String index(){
-        return "login";
+    @RequestMapping("/home")
+    public String home(User user, HttpServletRequest request, HttpServletResponse response){
+        /*Cookie[] cookies = request.getCookies();
+        String userName = HttpUtil.getCookie(cookies,"userName");
+        String passWord = HttpUtil.getCookie(cookies,"passWord");*/
+        HttpSession session = request.getSession();
+        String userName = (String)session.getAttribute("userName");
+        String passWord = (String)session.getAttribute("passWord");
+        if (StringUtils.isEmpty(userName)||StringUtils.isEmpty(passWord)){
+            return "login";
+        }else{
+            return "home";
+        }
     }
     @RequestMapping("/list")
     public String list(){
