@@ -50,11 +50,15 @@ public class LoginController extends BaseControler{
             log.info("-----------用户名或密码错误--------------");
             return  new ModelAndView("404",modelMap);
         }else{
-           /* Cookie cookie1 = new Cookie("userName",userstroe.getUserName());
+            /*Cookie cookie1 = new Cookie("userName",userstroe.getUserName());
             Cookie cookie2 = new Cookie("passWord",userstroe.getPassWord());
+            cookie1.setMaxAge(60*60*24);//有效时间一天
+            cookie2.setMaxAge(60*60*24);
             response.addCookie(cookie1);
             response.addCookie(cookie2);*/
             HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(60*60*24);
+            log.info("LOGIN JESSIONID:{}",session.getId());
             session.setAttribute("userName",userstroe.getUserName());
             session.setAttribute("passWord",userstroe.getPassWord());
             return new ModelAndView("home",modelMap);

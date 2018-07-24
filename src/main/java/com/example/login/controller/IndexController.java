@@ -23,12 +23,16 @@ public class IndexController {
 
     @RequestMapping("/home")
     public String home(User user, HttpServletRequest request, HttpServletResponse response){
-        /*Cookie[] cookies = request.getCookies();
+
+        /* cokkie机制保持与客户端会话
+        Cookie[] cookies = request.getCookies();
         String userName = HttpUtil.getCookie(cookies,"userName");
         String passWord = HttpUtil.getCookie(cookies,"passWord");*/
+        //session机制保持与客户端的会话
         HttpSession session = request.getSession();
         String userName = (String)session.getAttribute("userName");
         String passWord = (String)session.getAttribute("passWord");
+        log.info("HOME JESSIONID:{},USERNAME:{},PASSWORD:{}",session.getId(),userName,passWord);
         if (StringUtils.isEmpty(userName)||StringUtils.isEmpty(passWord)){
             return "login";
         }else{
